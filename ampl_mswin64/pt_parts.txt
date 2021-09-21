@@ -1,0 +1,23 @@
+core - made of metal - indicates full PT replacement?
+
+tap changer - enables an interval of voltage variation
+two versions, deenergized (DETC), while PT is not loaded and On Load Tap Changer (OLTC)
+(this if for medium and heavy loads)
+
+bushings - link windings to a network
+
+gaskets and seals
+
+fan and pump bearing
+
+transducers
+
+
+
+
+
+
+Expensive failure is often in bushing or OLTC
+
+
+(CIGRE page 11)

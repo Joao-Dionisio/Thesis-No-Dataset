@@ -1,0 +1,13 @@
+reset; 
+
+#model final_model_simple.mod
+model final_model.mod
+data final_model.dat
+
+option solver gurobi;
+option gurobi_options "timelim=10";
+solve;
+
+display profit;
+display rul;
+display q;

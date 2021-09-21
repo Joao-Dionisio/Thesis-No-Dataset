@@ -1,0 +1,10 @@
+*.aux
+*.toc
+*.synctex
+*.out
+.lo?
+.lo
+*.lo?
+*.blg
+*.bbl
+DissertationInstructions.pdf

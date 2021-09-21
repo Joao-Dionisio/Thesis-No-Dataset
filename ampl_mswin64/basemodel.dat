@@ -1,0 +1,14 @@
+data;
+param:   RULmax   Cost :=
+   joints	  10   1900
+   oil  	  25   600000
+   winding 	  50   1000000 # values from markovian model (in pounds)
+;
+
+param Tmax := 100;
+param Price := 1;
+param Qmax := 2000000;
+param d := 0.9;
+param load_effect := 1;
+param best := 0;
+param index_best := 0;

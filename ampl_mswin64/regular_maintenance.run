@@ -1,0 +1,19 @@
+model basemodel3.mod
+data basemodel.dat
+
+for {i in 1..Tmax}{
+	let periodicity := i;
+
+	option solver gurobi;
+	option gurobi_options "timelim=10";
+	solve;
+	
+	if profit > best then {
+		let best := profit;
+		let index_best := i
+	}
+	#display x;
+}
+display index_best,best;
+
+

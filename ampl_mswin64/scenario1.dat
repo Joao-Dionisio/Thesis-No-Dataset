@@ -1,0 +1,17 @@
+param price :=
+	1	3
+	2	6
+	3	13;
+
+param interest_rate := 0.1;
+
+param small_maintenance := 15;
+param big_maintenance := 15;
+param degradation_factor := 0.9;
+
+param t_final := 40;
+
+param min_health := 30;
+param max_health := 100;
+
+set failure_time := 2 3 12;

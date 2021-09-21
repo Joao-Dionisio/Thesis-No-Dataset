@@ -1,0 +1,17 @@
+﻿entao, vamos ser um pouco mais sistemáticos.
+
+O objetivo é conhecer o melhor possível a função, escolhendo pontos fulcrais que nos permitam obter mais informação. Visitar os pontos demora tempo, tal como viajar de um ponto para o outro. Como tal, tem que haver um trade-off entre o quão valioso é um ponto e quanto é que nos custará visitá-lo. O professor achou por bem avaliar um ponto tendo em conta a sua variância. Parece fazer sentido, variância alta, maior possibilidade de ser desconhecido. 
+
+Portanto, nós estamos a escolher os pontos de maior variância, num algoritmo greedy. Será que podemos fazer melhor? Pelo menos na corrida inicial não me parece. Isto porque não há maneira de medir a dificuldade de realizar um TSP antes de ter a informação toda, ou pelo menos quase toda. Pode ser que um ponto seja inicialmente muito distante dos outros, mas que depois acabe por fazer parte de um cluster significativo. Mas podemos fazer algo no final, pois aí já conseguimos saber se um ponto vale a pena ou não (ou ter uma ideia, pelo menos).
+
+Se quisermos saber se um ponto vale a pena ou não, penso que teremos que ter uma medida que teste precisamente isso. Essa medida dependeria de várias coisas. Dependeria da variância associada e do quão distante está dos outros pontos, claro. Mas também do tempo de probing, da velocidade do navio e do tempo total. Seria algo como:
+
+f(x) = (k1 *x V(x) / time\_prob) - (k2 x distance(x) / speed)* 
+
+  
+Mas adiante. Ao escolhermos os pontos, da maneira greedy, procuramos aleatoriamente por outros pontos que estejam lá perto, para encontrar alguns que tenham melhor variância, ou que melhorem o TSP. Não tendo estabelecido qual o melhor tradeoff, simplesmente escolhemos pontos que pelo menos não piorem nenhuma das componentes. Ao escolher um ponto, repetimos o processo, até estabilizar. Isto terá tendência para convergir para pontos bons, dependendo da maneira que escolhermos para avaliar os pontos. 
+
+Uma coisa interessante a notar é a maneira como isto evolui, pois parece que o benefício da aleatoriedade vai diminuindo com o aumento do número de pontos conhecidos no início da viagem. Para além disso, apesar de termos que fazer mais testes, parece que começar com os pontos iniciais em posições aleatórias em vez de posições regulares também piora os resultados. Estou agora a fazer o maior número de testes que já fiz, para ter uma melhor ideia de como isto funciona. Em termos de testes, também temos que ver como é que os métodos são afetados por mexer nas definições do problema (os tempos e velocidades). 
+
+  
+O professor mencionou que, segundo a sua experiência, obtínhamos melhores resultados quando conseguimos encaixar mais uma observação. Com as definições standard (T = 100, t = 1, s = 1), tal não me parece realista, pois chegamos sempre às 91 escavações, o que nos diz que passamos 91% do tempo a escavar ou, por outro lado, 9% do tempo a viajar. Mesmo arranjar mais uma escavação parece ser uma tarefa demasiado difícil, pois implica reduzir o tempo que se está a viajar em aproximadamente 11%. Se a viagem ocupar uma percentagem maior, então haverá mais possibilidade de melhorar a viagem, havendo assim possibilidade de aumentar o número de escavações. (Não estou a dizer que teremos mais escavações do que agora, pelo contrário. O que estou a dizer é que agora não temos como melhorar, dado estar já tão perto do ótimo, em termos de número de escavações). Portanto, a querermos fazer um estudo destes, temos que reduzir a velocidade do navio.

@@ -1,0 +1,323 @@
+
+melhor forma para escrever constraints grandes?
+
+usar o SEP para o sensitivity analysis
+
+-----------------------------------------------------------------
+
+tanto no cbm como no tbm aproveitar o facto de winding => all para reduzir o nr de testes
+						ops => oil
+
+too much temp reduction. com muito pouca carga o winding não degrada
+
+
+--------------------------------------------------------------
+
+bestbndstop para os testes do tbm e cbm
+
+
+E se se otimizasse a carga apenas para períodos mais curtos?
+
+
+------------------------------------------------------------------
+
+reduzir os valores para termos um coeficient range melhor.
+aproveitar as 24h também no RUL
+
+----------------------------------------------------------------
+
+como correr o programa no ampl logo a partir do terminal para deixar a correr? agora
+tenho que entrar mesmo no ampl
+
+reduzir breakpoints nos piecewise linear
+
+há alguma formade ver a melhor solução até agora?
+
+
+----------------------------------------------------------------------------
+
+ele agora quando está parado está a degradar-se com a temperatura, é preciso ter cuidado - done
+
+Fazer testes com várias escalas temporais? por exemplo, 3 anos/5/10 etc.? fazer testes mais a curto prazo em que o controlo não otimiza a carga?
+
+
+o force maintenance para já está em pausa - done, mas demora muito
+
+a manutenção é feita quando, exatamente? sendo escalas temporais diferentes, assumimos que é a 1 janeiro? estamos a assumir que no ano da manutenção não há degradação
+
+------------------------------------------------------------------------
+
+
+
+ter um dia típico (a carga é sempre igual), depois passar a uma semana típica etc
+
+mudaste algumas variáveis para começarem em 0, é possível que isto tenha feito porcaria
+
+-----------------------------------------
+
+o que é a camera-ready copy do research paper?
+
+
+com o ttmax ele não consegue correr.
+
+
+
+---------------------------------------------
+
+Estive a fazer outra review para o LOD
+
+A rebuttal letter, estava a descrever a fazer uma lista com as mudanças. É suposto ser
+algo mais composto?
+
+O demand faz sentido? Estamos a trabalhar com um único transformador, não com uma grid.
+De qualquer das formas, já tenho isso a funcionar mais ou menos.
+
+Acho que esta semana vou ler o artigo com mais atenção e fazer os testes todos direito
+
+
+
+
+----------------------------------------------------------------
+
+no related work, ter só a parte do planning?
+
+acrescentar também o repositório do github, apesar de estar muito desorganizado?
+
+exame ML sexta 25 a terminar às 11h30
+
+----------------------------------------------------------------------
+
+já estou a conseguir fazer as coisas, tenho apenas que fazer mais algo com a temperatura e depois incluir a humidade
+
+escrever coisas sobre predictive maintenance?
+
+
+
+
+--------------------------------------------------------------
+
+Por cada ano ele envelhece x anos, consoante a temperatura e assim
+
+As equações de Arrhenius relacionam a life expectancy com a temp. do hotspot, o ratio of load losses at rated current to no-load losses at rated voltage (R) e a activation energy
+Mas principalmente com o DP
+
+
+
+R é uma constante igual a 8314 J/K.mol
+
+
+
+
+-----------------------------------------------------------------
+
+não me parece que se vá conseguir alguma coisa. Fazendo ridge regression, quanto mais horas um PT fica a trabahar com <25% de carga, menos tempo de vida o óleo tem
+isto não faz grande sentido, a não ser que transformadores que estejam pior estejam sob menos carga. a causalidade pode acabar por ser ao contrário.
+----------------------------------------------------------------
+
+avançar o modelo - com o gerador de dados
+
+
+
+usar uma curva sigmoide para simular os vértices que não dependem de nada. estes dependem do tempo
+
+os outros são também uma função sigmóide mas dependem do estado do anterior, em vez do tempo. (provavelmente deve depender do tempo também)
+algumas também terão que depender da carga e da temperatura. 
+
+
+
+------------------------------------
+esta semana não foi muito produtiva.
+ainda não fiquei bem esclarecido quanto ao data generator. 
+exatamente que tipo de dados é suposto fazer? medidas de DGA semi-aleatórias e depois tentar arranjar uma função com ML para pôr no AMPL?
+Onde é que vão entrar os processos gaussianos?
+
+
+
+Como sei o copyright das coisas?
+
+
+---------------------------------
+sermos nós a produzir os dados. tempo de substituição do óleo. criar uns 5000/10000
+
+-----------------
+
+Ter um plano de atividades bem definido
+
+simplesmente ignorar e criar nós os dados?
+
+
+
+
+------------------------------------------------------------------
+nos dados tratados temos as mudanças de óleo. então vemos daí o RUL do óleo e fazemos uma regressão com a informação que lá temos
+por exemplo, olhando para o PT 7 (linha 7 até 13). ele leva uma mudança de óleo em 2003 (aprox), sem mudanças de óleo prévias. 
+portanto, vamos dizer que o óleo tem um RUL de 6 anos na primeira observação (2003-1997), 5 anos na segunda, etc. e depois
+tentamos prever o RUL a partir dos dados. o nosso target vai ser o RUL
+
+
+Se calhar usar dois modelos? Um que use o DGA e outro a carga? Os dados que temos não permitem ambos
+
+
+parece que o pessoal da feup quer fazer artigos à força toda, com pouco interesse...
+
+
+falar com o valter pimeta para pedir para ter as coisas prontas já na próxima semana
+workshop da próxima semana? o que é suposto ser isto?
+
+
+
+
+
+
+
+--------------------------------------------------
+regressão logística classificação para ver quanto tempo o DGA 
+discretizar em função do load factor.
+Pegar no RARI2020, escolher os dados que tenham LF entre 0 e 10, entre 0 e 20, etc e para cada
+um deles fazer DGAF em função do tempo
+
+
+--------------------
+O load factor aquando a recolha do DGA afeta o seu valor, não é apenas o LF durante o período
+Um dos datasets da EDP
+
+
+
+IJUP acho que correu bem, mas estava um bocado desajustado comparando com as outras apresentações, de matemática
+
+--------------------------
+option timelim parece não funcionar com o gurobi...
+encontrei artigos com thresholds para DGA
+
+os artigos trabalham sempre com um failure rate, em que o PT falha
+---------------------------------------------------------------------
+Ver artigos que citam o Two-stage framework
+
+estabilizar os modelos para depois apresentar ao válter (estabilizar no sentido de ter uma coisa que funcione relativamente bem)
+
+com GPs estimar aging factor. ver como é que o DGA evolui entre as mudanças de óleo
+
+por causa dos dados, talvez trabalhemos apenas com o óleo e o transformador. joints não temos
+
+comparar dois case studies com o nosso modelo para apresentar ao valter
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------
+O two stage framework eles fazem um paper para o modelo e outro para os resultados. Não é batota?
+
+o winding é >= 0, não estou a ver como posso deixar que fique constante igual a 0.
+-----------------------------
+H[t+1] = HI[t] - k
+
+
+
+------------------------------------------------------
+Usar o Sampl para modelar probabilidade de falha? (Stochastic AMPL)
+usar o .dat faz com que demore mais?
+encontrei uma data de livros para modelação e artigos (coisas com best practices)
+acho que já implementei failure rate stocástico. mas só consigo fazê-o antes do solve, dizer em que anos é que vai haver failure.
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------
+continuar optimização, remover implicações, usar bigM para evitar multiplicação de variáveis
+
+
+
+--------------------------------------------
+Usar bigM para evitar multiplicação de variáveis
+
+HI[t+1] = chi[1,t]*100 + (1-chi[1,t])*
+
+!!!!
+H[t+1] <= H[t]*0.9 + 100*chi[t]
+!!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------
+imaginar tempo de vida fixo e começar a trabalhar por aí - não deixar que as coisas passem determinado valor
+valores de DGA anuais que são alterados se houver manutenção
+imaginar que só há um tipo de manutenção
+
+ler o tutorial de thomson sampling
+--------------------------------------------------------------------
+
+Começo a pensar se o que estamos a fazer não é precisamente thompson sampling
+
+Como lidar com o HI no AMPL? Como alterar o valor do HI quando há manutenção?
+
+in SEP, fitting every point at once is the same as one by one?
+o grid search é horrível
+qual a melhor maneira para comparar os métodos? % improvement caso a caso?
+
+penso que consegui implementar alguns casos. O mais simples funciona, os
+restantes demoram muito tempo
+
+remover os resultados para caber na submissão
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------
+Add to the constraints electricity demand. Add to the variables as well.
+O preço de manutenções não ser constante, tal como o preço dos PTs. Vamos olhar para o Present Value e assim.
+FAZER AS COISAS EM AMPL
+--------------------
+
+3ª: Encontrei artigo com preços de coisas e crescimento esperado.
+Neste artigo também fazem sensitivity analysis <- como é que alterações nos parâmetros alteram o final
+
+comecei a passar as coisas para AMPL. Matriz de variáveis?
+
+encontrei outro paper para fazer manutenção numa grid de transformadores, tem decision variables. nós focamo-nos apenas num transformador, certo?
+foca-se apenas na midlife do transformador e assume que manutenção restaura a vida do PT ao que era no início do estudo.
+
+Vejo muitos case studies. opinião?
+
+andei a ler coisas do engineering economy
+
+Penso já ter arranjado um kernel.
+No SEP, a diferença entre o método do prof e o grid search é que o do prof vai atrás do ponto variância
+mais alta. thomson sampling
+
+
+davi? teoria de grupos?
+
+

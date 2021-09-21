@@ -1,0 +1,11 @@
+reset; 
+
+model model.mod
+data basemodel.dat
+
+option solver gurobi;
+option gurobi_options "timelim=3";
+solve;
+
+display profit;
+

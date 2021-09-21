@@ -1,0 +1,136 @@
+---
+title: "Power Transformer Visualization"
+output:
+  html_document: default
+  pdf_document: default
+---
+    
+
+```{r, setup, include=FALSE}
+  knitr::opts_knit$set(root.dir = "C:/Users/jdion/OneDrive/Ambiente de Trabalho/Tese/Data Set/Dados_EDPD")
+```
+
+setwd("C:/Users/jdion/OneDrive/Ambiente de Trabalho/Tese/Data Set/Dados_EDPD")
+
+
+```{r, cache=FALSE, results=FALSE, warning=FALSE, comment=FALSE, warning=FALSE} 
+
+library(readxl)
+library(summarytools)
+library(dplyr)
+library(DataExplorer)
+library(ggplot2)
+library(arsenal)
+library(ISLR)
+library(dlookr)
+```
+
+
+```{r, cache=FALSE, results=FALSE, warning=FALSE, comment=FALSE, warning=FALSE} 
+
+my_data <- read_excel("RARI2020.xlsx", skip=3)
+colnames(my_data)
+
+raw_my_data <- my_data %>% 
+                    select("SAP ID", "UO", "REF_RESP_WORK_CENTER", "ID da subestação",
+                           "Número / designação do painel", "Ano fabrico", "Nº Serie Corrigido LABELEC",
+                           "Situação", "ultima alteração técnica",
+                           "Diag Furánicos", "Diag AC", "Diag FQ", "Recomendações", "Ambito", 
+                           "Idade \r\n(em 2015)", "H2", "CH4", "C2H6", "C2H4", "C2H2", "CO", "CO2",
+                           "Tensão Disruptiva [kV]", "IFT [dyne/cm]", "Teor de Acidez", "Teor de Água [ppm]",
+                           "Cor", "2 FAL MAX 98-18", "2 FAL 2019", "2FAL final", "tan d", "LF",
+                           "PQ C", "PQ B", "PQ A", "PQ A+", "Condição Travessias", 
+                           "Nível de corrosão Cuba/Conservador/Radiadores", "Condição Ventilação", 
+                           "Fugas de Óleo", "Nível Ceráunico", "Incêndio", "Inundação", 
+                           "Eventos Atmosféricos Extremos\r\nP(TIEMT) > 0.2 (Simulado)", 
+                           "Eventos Atmosféricos Extremos", "Aceleração Sísmica solo (m/s2)",
+                           "Risco Sísmico", "Transformador %")
+
+
+relevant_my_data <- my_data %>%
+                        select("SAP ID", "Ano fabrico", "Situação", "ultima alteração técnica",
+                               "Diag Furánicos", "Diag AC", "Diag FQ", "Recomendações",
+                               "H2", "CH4", "C2H6", "C2H4", "C2H2", "CO", "CO2",
+                               "Teor de Acidez", "Teor de Água [ppm]",
+                               "2 FAL MAX 98-18", "2 FAL 2019", 
+                               "Nível de corrosão Cuba/Conservador/Radiadores", "Condição Ventilação", 
+                               "Fugas de Óleo")
+
+relevant_my_data$H2 <- as.numeric(relevant_my_data$H2)
+relevant_my_data$CH4 <- as.numeric(relevant_my_data$CH4)
+relevant_my_data$C2H6 <- as.numeric(relevant_my_data$C2H6)
+relevant_my_data$C2H4 <- as.numeric(relevant_my_data$C2H4)
+relevant_my_data$C2H2 <- as.numeric(relevant_my_data$C2H2)
+relevant_my_data$CO <- as.numeric(relevant_my_data$CO)
+relevant_my_data$CO2 <- as.numeric(relevant_my_data$CO2)
+relevant_my_data$FAL <- as.numeric(relevant_my_data$`2 FAL 2019`)
+
+colnames(relevant_my_data)[which(names(relevant_my_data) == "Nível de corrosão Cuba/Conservador/Radiadores")] <- "Nível de corrosão"
+
+target_by(relevant_my_data, "Recomendações")
+eda_report(relevant_my_data, target="Recomendações")
+help("eda_report")
+
+if (FALSE){
+furanicos <- my_data %>%
+              select("SAP ID", "2 FAL 2019", "Recomendações")
+
+furanicos$`2 FAL 2019` <- as.numeric(furanicos$`2 FAL 2019`)
+
+
+heatmap(furanicos)
+
+introduce(furanicos)
+plot_intro(furanicos)
+plot_missing(furanicos)
+plot_bar(furanicos)
+plot_histogram(furanicos)
+plot_density(furanicos)
+plot_qq(furanicos)
+plot_correlation(furanicos)
+plot_boxplot(furanicos, by = "Recomendações")
+
+
+
+
+
+
+dga <- my_data %>%
+        select("SAP ID", "H2", "CH4", "C2H6", "C2H4", "C2H2", "CO", "CO2", "Diag AC")
+
+dga$H2 <- as.numeric(dga$H2)
+dga$CH4 <- as.numeric(dga$CH4)
+dga$C2H6 <- as.numeric(dga$C2H6)
+dga$C2H4 <- as.numeric(dga$C2H4)
+dga$C2H2 <- as.numeric(dga$C2H2)
+dga$CO <- as.numeric(dga$CO)
+dga$CO2 <- as.numeric(dga$CO2)
+dga$FAL <- as.numeric(my_data$`2 FAL 2019`)
+
+heatmap(na.omit(as.matrix(temp)))
+temp <- dga[ , !names(dga) %in% c("SAP ID", "Diag AC")]
+
+introduce(dga)
+plot_intro(dga)
+plot_missing(dga)
+plot_bar(dga)
+plot_histogram(dga)
+plot_density(dga)
+plot_qq(dga)
+plot_correlation(dga)
+plot_boxplot(dga, by = "Diag AC")
+
+typeof(dga$H2)
+dfSummary(dga)
+view(dfSummary(dga))
+freq(dga$`Diag AC`)
+```
+
+temp <- my_data %>% select("Recomendações", "Ano fabrico")
+year.mean <- t(tapply(temp$"Ano fabrico",
+                        list(temp$"Recomendações"), mean))
+year.mean <- na.omit(year.mean)
+temp$`Ano fabrico` <- as.numeric(temp$`Ano fabrico`)
+v2 <- nchar(year.mean[[1]])
+barplot(year.mean, aes(stringr::str_wrap(year.mean, 15), V2), beside=TRUE, legend=rownames(year.mean), ylim=c(1950,2020))
+}

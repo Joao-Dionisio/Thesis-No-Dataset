@@ -1,0 +1,179 @@
+Reunião com Válter para validar as components de um PT
+
+podemos isolar os subsistemas do PT. Se por, exemplo, quisermos substituir o cooling system, podemos fazê-lo à vontade, substitui-lo
+por um completamente diferente
+
+Travessia = Bushing . o que eles usam é óleo-ar(?)
+
+os subcomponentes podem fazer parte de vários subsistemas
+
+ter os 5 subsistemas 
+
+explosão do bushing pode levar à explosão
+
+
+O bearing impacta o cooling system e este impacta o winding
+
+Capacitance Tap = Testing Tap
+
+as juntas são ensaiadas anualmente e de dois em dois anos
+
+Bushings:
+	- Bushings (quando tem vários tipos eles fazem vários, é o cliente que escolhe)
+	- 
+
+OLTC:
+
+
+OPS:
+	- Conservador
+	- Secador -> óleo
+
+Cooling System:
+
+
+Active Part:
+
+
+escolher um subsistema e trabalhar com ele
+
+podia ser interessante trabalhar mais com o cooling system
+
+relação entre o grau de polimerização e a temperatura, para encontrar uma curva (ou com a água, é capaz de ser melhor)
+os secadores se falharem o ar fica mais húmido o que leva a uma degradação do óleo
+
+os secadores têm que ser mantidos periodicamente
+
+manutenção periódica
+
+manutenção extraordinária mais profunda, de beneficiação
+
+o óleo pode ser secado sem ser substituído
+
+as juntas fariam parte da manutenção extraordinária
+
+
+
+
+IEC 60076 parte 7 - Loading Guide
+
+grau de água do óleo e da temperatura e do regime de exploração
+
+
+
+
+as subcomponentes que faltam são:
+
+falta o núcleo magnético (da parte ativa, que está com o winding)
+
+
+oil é um compoente
+
+O OIP está dentro do winding
+
+juntas estão em quase todos (são até subsubcomponentes)
+
+a tap não é propriamente um componente, está dentro do bushing (bushing como componente, não subssistema)
+
+
+o cooling system 
+
+
+os rolamentes (chumaceiras) são também um subsubcomponente
+
+
+enviar o diagrama editável em powerpoint ou word
+
+
+
+
+
+-------------------------------------------------------------
+o conceito que está no modelo parece interessante, mas o modelo é muito simples. podemos complicar para uma grid de
+transformadores e assim, mesmo aparte da tecnologia por detrás de um transformador.  
+
+pode ser considerado como um modelo de um subsistema.
+as travessias também é uma componente crítica. 
+o rolador em carga deve ter um plano de manutenção próprio
+
+o primeiro CIGRE tem informação detalhada sobre as componentes
+
+uma ideia podia ser criar um modelo para cada uma das subcomponentes e depois juntá-las num modelo mais complexo.
+
+papel é o fator limitante, o que não implica que as outras componentes não sejam igualmente importantes
+(falhas catastróficas implicam o fim de vida do PT também)
+
+apesar de não conseguirmos terdados, eles estão na mesma interessados, porque estão dispostos a começar a 
+recolher essa informação. Nem que o modelo seja teórico, ao menos têm assim uma metodologia de
+recolha 
+
+Os PTs são feitos para que tenham 20 anos de vida
+
+na bathtub probabilidade de existir uma falha é maior no início, mas está dentro da garantia. 
+a maior probabilidade vem provavelmente de erros no fabrico do transformador. são habitualmente causadas
+pelo fabricante. nos de distribuição poderá fazer mais sentido o erro vir dos utilizadores
+
+não existem ferramentas para simular o estado do transformador, a partir das variáveis de operação, 
+apenas a simulação de redes
+
+os submodelos já há alguma trabalho na publicação do CIGRE
+
+podem ajudar a prever os custos associados a algumas ações
+
+pandas power
+
+é difícil criar esta relação de proporcionalidade (em vez do valor em euros), mas conseguem arranjar uma simplificação
+
+
+
+------------------------------------------
+Preço de um transformador? 
+
+Os clientes podem vender os seus transformadores? Vendem as peças para sucata? Alguma maneira de prever o preço?
+
+Vender antes do fim de vida é uma opção?
+
+
+Custo da verificação do óleo? Custo da substituição do óleo?
+O óleo não é subsittuido. Substituir peças é comum, substituir travessias, termómetros, ventiladores
+Se houver uma falha catastrófica é que vale a pena fazer uma mautenção interior mais agressiva.
+
+Custo de manutenções mais profundas? Imagino que haja vários tipos.
+
+
+Informação sobre as falhas - não têm dados de jeito, não acompanham os PTs ao longo da sua vida
+Os clientes é que devem ter os datasets.
+
+
+--------------------
+Os planos de manutenção são bastante rudimentares.
+
+Indústria deixa andar até ter falha ou então tem um príodo de manutenção muito bem definido.
+
+
+Os custos -> conseguem prever os custos
+
+Muitas vezes os custos são exagerados nos estudos.
+
+
+DGA é recomendado anualmente
+
+
+Os clientes podem vender os PTs, mas não é muito comum. É mais comum em transformadores de 
+distribuição.
+
+Quando chega ao fim de vida vai para abate.
+
+se se substituir as juntas ou secadores evitamos que a água entre no óleo e evitamos a subsituição
+
+substituir o enrolamento todo é possível e dá uma nova vida ao transformador.
+
+
+equipamentos pesados na indústria mineira podem ter modelos que podem ser aproveitados
+
+----------------
+Qual diriam ser o principal objetivo dos clientes? Uma empresa do tamanho da EDP imagino que se foque simplesmente
+em maximizar o lucro, mas uma mais pequena pode não poder dar-se ao luxo de investir num transformador novo. A EFACEC
+tem clientes destes? 
+
+ 

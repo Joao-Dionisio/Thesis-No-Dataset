@@ -1,0 +1,19 @@
+luisdias@fe.up.pt
+
+maior interesse em transformadores alta para média e também de média para alta
+
+
+dados que temos:
+
+concentração de gás -> condição curto prazo
+concentração 2-FAL -> condição longo prazo
+medida qualitativa do estado (cor, partículas) 
+
+o que podemos fazer?
+
+Com os gases:
+		tentar melhorar a previsão do artigo do prof. Luís Guimarães
+
+Com 2-FAL:
+		conseguimos obter uma medida indireta do estado do papel (DP) através da
+		análise do 2-FAL no óleo

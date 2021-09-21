@@ -1,0 +1,31 @@
+Markov Chain paper:
+A = Availability
+C = Long term operational cost
+C_u = Downtime penalty cost due to unexpected failure
+pi_i,3 
+pi_4,0
+C'_F = Cost of corrective maintenance
+C'_R = Cost of replacement
+1/mu_F = Duration of major maintenance
+1/mu_R = Duration of replacement
+
+A = 1 - mu_{F}*(sum_{i=0}^{3}pi_{i,3}) + mu_{R}*pi_{4,0}
+C = C_u * (sum_{i=0}^{3} pi_{i,3} + pi_{4,0}) + (C'_F)*(mu_F)*(sum_{i=0}^{3} pi_{i,3}) + C'_{R}*mu_{R}*pi_{4,0} 
+
+
+
+
+
+Dino's thesis:
+Harris Chain <- continuous state markov chain
+
+Failure Rate. lambda(t) = alpha(t) * lambda_{n}
+
+Minor maintenance cost (oil change): c
+Minor maintenance duration: d
+Major maintenance cost: C
+Major maintenance duration: D
+
+Unexpected 
+
+Daily profit. P(t) = e^(-alpha*t) * P_0

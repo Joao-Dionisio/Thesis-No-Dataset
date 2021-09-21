@@ -1,0 +1,108 @@
+data;
+param:   RULmax   Cost :=
+   OPS	  262800   2000
+   Cooling_System 131400 1000
+   Oil  	  131400   300
+   Winding 	  438000   1 # values from markovian model (in pounds)
+;
+
+
+#param: possible_load squared_load possible_temperature:=
+#0	0	0	24
+#1	0.1	0.01	25.8	
+#2	0.2	0.04	28.9
+#3	0.3	0.09	32.7	
+#4   	0.4	0.16	37.1
+#5   	0.5	0.25	42
+#6	0.6	0.36	47.5
+#7   	0.7	0.49	53.3
+#8   	0.8	0.64	59.5
+#9   	0.9	0.81	66.1
+#10  	1	1.0	73
+#11  	1.1	1.21	80.3
+#12  	1.2	1.44	87.9
+#13  	1.3	1.69	95.7
+#14  	1.4	1.96	103.9
+#15  	1.5	2.25	112.3
+#16  	1.6	2.56	121
+#17  	1.7	2.89	130
+#18  	1.8	3.24	139.1
+#19  	1.9	3.61	148.6
+#20  	2	4.0	158;
+
+param: possible_load :=
+0	0
+1	0.25
+2	0.5
+3	0.75
+4   	1
+5   	1.14
+6	1.28
+7   	1.42
+8   	1.56
+9   	1.70
+10  	1.84
+11  	2;
+
+
+param: hs :=
+0	0
+1	80
+2	86
+3	92
+4	98
+5	104
+6	110
+7	116
+8	122
+9	128
+10	134
+11	140;
+
+
+param V: 1 	2	3:=
+0	0	0	0
+1	0.12	0.44 	1.323
+2	0.25 	0.91 	2.742
+3	0.5 	1.84 	5.548
+4	1   	3.66 	10.976
+5	1.94 	7.08 	21.245
+6	3.67 	13.43 	40.281
+7	6.82 	24.96 	74.88
+8	12.44 	45.53 	136.601
+9	22.3 	81.58 	244.755
+10	39.27 	143.69 	431.061
+11	68.04 	248.93 	746.802;
+
+
+
+
+param Tmax := 100;
+param Price := 100000000;
+#param Qmax := 2000000;
+param Qmax := 2;
+param d := 0.9;
+param load_effect := 1;
+
+param interest_rate := 1.005;
+
+# from IEEE standard
+#param r = 1000; # these are dependant on PT type (type of cooling system and whatnot)
+#param x = 0.8;
+#param y = 1.3;
+#param k_11 = 0.5;
+#param k_21 = 2.0;
+#param k_22 = 2.0;
+#param tau_0 = 210;
+#param tau_w = 10;
+
+#param H = 1.4;
+#param gr = 14.5;
+#param t_w = 7;
+
+
+
+# from helder's email
+#param A := 460000;
+#param oilsat23 = 55; 
+#param EA = 82000;

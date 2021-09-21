@@ -1,0 +1,360 @@
+\chapter{Desenho e Desenvolvimento}\label{chap:devel}
+
+O referente ao ``Your work'' do capítulo~\ref{chap:back}.
+
+No contexto deste template, este capítulo serve de exemplos de uso do \LaTeX e 
+de algumas regras de tipografia. Note-se que as regras sobre a formatação estão 
+disponíveis 
+\href{https://sigarra.up.pt/fcup/pt/conteudos_geral.ver?pct_pag_id=1011511&pct_parametros=pv_unidade=97&pct_grupo=33673&pct_grupo=33670&pct_grupo=33675&pct_grupo=33683&pct_grupo=36711#36711}{Estrutura 
+e Layout de teses}. Pode-se ver exemplos de tese (para a formatação e conteúdo) 
+no \href{https://repositorio-aberto.up.pt/handle/10216/9535}{repositório aberto 
+da UP}.
+
+\section{Exemplo de código}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{lstlisting}[numbers=none,language=java,caption={[CommandDaemonCallsItf]
+   {CommandDaemon} callback interfaces},label=lis:commandDCallsItfs,float=htb]
+public interface CallBackCmdMeasurements { // comment
+	public abstract void newMeasure(MeasurementBasic measure, int reqId);
+	public abstract void newMeasuresAggSimp(MeasurementBasic[] measuresAggSimp, 'A string');
+}
+\end{lstlisting}
+
+É possível referir uma lista de código, por exemplo o bloco de código~\ref{lis:commandDCallsItfs}.
+
+\section{Acrónimos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Deve-se acrescentar os acrónimos no ficheiro \texttt{acros.tex} e ordená-los 
+alfabeticamente nesse ficheiro.
+Vamos usar o acrónimo \ac{TCP} que deve estar expandido, assim como no 
+capítulo~\ref{chap:tests}. Os acrónimos devem aparecer expandidos em cada 
+capítulo (o que está já configurado para esta dissertação).
+
+Ao usar $\backslash$\texttt{acp} o \texttt{acronym} tentará colocar o plural 
+(acrescentando um s). É possível no ficheiro \texttt{acros.tex} colocar qual o 
+plural pretendido por exemplo \acp{USF}. Deve-se usar 
+$\backslash$\texttt{newacroplural\{USF\}\{Unidades de Saúde Familiar\}}, 
+definindo o novo plural. Pode-se opcionalmente definir um novo ``plural'' para a 
+versão do acrónimo com $\backslash$\texttt{newacroplural[USFes]\{USF\}\{Unidades 
+de Saúde Familiar\}} (acrónimo no plural incorreto; apenas para exemplo).
+
+Podem usar $\backslash$\texttt{acs} para apenas mostrar o acrónimo, 
+$\backslash$\texttt{acl} para mostrar a expansão. Ver mais na documentação do 
+pacote \texttt{acronym}.
+
+\section{Figuras}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Podem ver a figura~\ref{fig:logoFCUP} muito bem. Notem que na lista de figuras 
+não aparece tudo o que está na legenda, mas apenas o que está entre~\texttt{[]}.
+
+\begin{figure}[htb]
+   \centering % center the figure
+   \includegraphics[scale=.4]{pics/fc_logo}
+   \caption[FCUP logo velho]{O logo da FCUP antigo}\label{fig:logoFCUP}
+\end{figure}
+
+As figuras devem usar o posicionamento [htb] para serem preferencialmente colocadas no local onde foram declaradas.
+
+\subsection{Formato}
+%---------------------------------------
+    Devem colocar as figuras sempre que possível em pdf. Usem o programa (ou aplicação web) para exportar para pdf. Desse modo a qualidade das mesmas é sempre maior.
+
+    No caso em que o pdf gerado ocupe uma página A4 inteira (por exemplo nas 
+    ferramentas do MS Office) podem usar o 
+    \texttt{\href{https://www.ctan.org/pkg/pdfcrop?lang=en}{pdfcrop}} no pdf 
+    gerado. Este comando está disponível na maior parte das distribuições de 
+    \LaTeX.
+
+
+\section{Referências a bibliografia}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Algumas referências para se ver a ordenação~\cite{yaacoub2012} (estão ordenadas pelo apelido do autor). Aqui outra ainda~\cite{etsitr102732}.
+
+Temos aqui o Clausen~\cite{Clausen2003}. E para ver várias~\cite{yaacoub2012, etsitr102732, strunk2007elements}.
+
+No ficheiro bib de referências deve-se colocar entre \{\} o que se quiser manter com maiúsculas no título. Exemplo: \texttt{title = \{Addressing the \{WLAN\} Problem\}} resulta em \texttt{Addressing the WLAN problem}, note-se o \textbf{p} de \emph{problem}. 
+
+Para saber os campos do bibtex relevantes para cada tipo de entrada pode-se utilizar um editor de bibtex como o \href{http://www.jabref.org}{JabRef}.
+
+Os meses indicados no ficheiro \texttt{bib} poderão aparecer em inglês, caso se pretenda deve-se colocar o texto em português explicitamente no ficheiro \texttt{bib}.
+
+
+\section{Capa}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Para a inclusão da formatação correta para a capa, pode-se criar um pdf usando o 
+pptx disponível 
+(\texttt{\href{https://sigarra.up.pt/fcup/pt/conteudos_service.conteudos_cont?pct_id=162960&pv_cod=19anaMgwFYkm}{CapaMSc\_PowerPoint.pptx}}, 
+necessário fazer login no Sigarra) e depois incluí-lo com o comando seguinte 
+(comentado no tex original).
+
+\begin{lstlisting}[numbers=none,language=TeX,caption={[Capas tese] Incluir capas oficiais},label=lis:capasTese,float=htb]
+\includepdf[pages=1]{FrontPage-MSc.pdf}
+\cleardoublepage
+\includepdf[pages=2]{FrontPage-MSc.pdf}
+\cleardoublepage
+\end{lstlisting}
+
+
+\section{Tabelas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Exemplo de uma tabela mais complexa na tabela~\ref{tab:bsnvswsn}.
+
+\begin{table}[htbp]
+   \caption[BSN vs WSN]{BSN versus WSN
+   (with input from  Latré  and Guang )}
+\label{tab:bsnvswsn}
+\centering
+{
+\footnotesize
+\begin{tabularx}{0.98\textwidth}{|>{\columncolor{gray-cell}}c|X|X|}
+   \hline
+   \rowcolor{gray-cell} 
+   &    \centering  \textbf{BSN} &  \centering \textbf{WSN}  \tabularnewline 
+   \hline
+   %%%% line
+   \begin{sideways} \hspace{-11em} \textbf{Distribution} \end{sideways}
+   &  
+   \begin{asparaenum}[\bfseries i)]
+      \item Existence of a \ac{BS};
+      \item \ac{BS} collects, maintains and processes the data;
+      \item Nodes will do minimal processing, sending all data to the \ac{BS};
+      \item Centralized system where \ac{BS} controls all nodes;
+      \item Node replacement is difficult in in-body sensor nodes;
+      \item Smaller number of nodes;
+      \item Nodes need to take biocompatibility, wearability into account.
+   \end{asparaenum}
+   & 
+   \begin{asparaenum}[\bfseries i)]
+
+      \item A \ac{BS} may or not exist or there may be several \acp{BS} (e.g. mobile nodes 
+         collect info, clustering);
+      \item As in \ac{BSN}, but also on-demand querying;
+      \item Nodes will do processing, aggregation to alleviate communication or 
+         correlate results;
+      \item Distributed system, nodes decide cooperatively;
+         %(form clusters, aggregate data, \etc);
+      \item Node replacement is difficult due to location, scale, etc.;
+      \item (usually) Wide areas covered by large number of nodes.
+      \item Nodes may need to be environment friendly, indiscernible from surroundings.
+     %    \vspace{-0.7em}
+   \end{asparaenum}
+   \tabularnewline \hline
+   %%%% line
+   \textbf{Comm.} 
+   & 
+   \begin{asparaenum}[\bfseries i)]
+      \item One hop to \ac{BS};
+      \item Close range but attenuated by body;
+      \item Data rates heterogeneous.
+    %\vspace{-0.7em}
+   \end{asparaenum}
+   & 
+   \begin{asparaenum}[\bfseries i)]
+      \item Multi hop through network of sensor nodes;
+      \item Long(er) range;
+      \item Data rates homogeneous.
+    %\vspace{-0.7em}
+   \end{asparaenum}
+   \tabularnewline \hline
+   %%%% line
+    \textbf{Data} 
+   & 
+   This is some text on this cell. The multirow package does not know the height of the cell and can not center the cell to the right. This is because of the X from tabularx.
+   & 
+   \multirow{ 2}{*}{This is on two rows of the table}
+
+ \tabularnewline \cline{1-2}\noalign{\vskip.3pt}% using the noaling vskip to show the line
+   %%%% line
+    \textbf{Energy} 
+   & 
+   Some more text just to show something
+   %      \vspace{-0.7em}
+   & 
+    \tabularnewline \hline
+\end{tabularx}
+}
+\end{table}
+
+Uma tabela de lado exemplificada em~\ref{tab:sensorExample}.
+\begin{sidewaystable}
+   \centering
+   \begin{threeparttable}
+      \caption{Sensor examples}\label{tab:sensorExample}
+      {
+      \footnotesize
+      %\begin{tabularx}{0.99\textheight}{|m{9.5em}|m{7.5em}|>{\columncolor{gray-cell}}m{12em}|m{12em}|c|c|m{5em}|}
+      \begin{tabular}{|>{\centering}m{9.5em}|>{\centering}m{6.5em}|>{\columncolor{gray-cell}\centering}m{14em}|m{15em}|c|c|>{\centering}m{6.5em}|}
+         \hline
+         \rowcolor{gray-cell} 
+          \textbf{Device} &  \textbf{Availability}&  \textbf{Sensed} & \centering \textbf{Technology} & 
+         \textbf {Frequency} & \textbf{Data Rate} \tnote{$\mathbf{\propto}$} &     \textbf{Energy} \tnote{$\mathbf{\Diamond}$}
+         \tabularnewline \hline
+
+         %%%% line
+         \multirow{6}{*}{\vspace{-3em}BioHarness BT} &
+         \multirow{6}{*}{\vspace{-3em}commercial}
+         & \acs{HR} & detection of \emph{QRS} complex in \acs{ECG}  &
+         1~Hz & 8~bps &
+         \multirow{6}{5.5em}{\centering 21~h transmitting}
+         \tabularnewline \cline{3-6}
+
+         %%%% line
+          &
+         & Breathing rate & conductive elastic measurement of thorax excursion & 1~Hz & 7~bps &
+          
+         \tabularnewline \cline{3-6}
+
+         %%%% line
+          &
+         & 3D Accelerometer & variability of a weight reference  & 50~Hz \tnote{$\Join$}& 500~bps \tnote{$\Join$} &
+          
+         \tabularnewline \cline{3-6}
+
+         %%%% line
+          &
+         & \acs{ECG} & potential difference across electrodes in body &  250~Hz &
+         2500~bps &
+          
+         \tabularnewline \cline{3-6}
+
+         %%%% line
+          &
+         & Gyroscope & angular momentum  & 1~Hz & 9~bps&
+          
+          \tabularnewline \cline{3-6}
+
+          &
+         & Skin temperature & thermistor  & 1~Hz & 9~bps&
+          
+         \tabularnewline \hline
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+       %%%% line
+        Actigraph GT3X+~\cite{actiGSpecs} &
+         commercial
+         & 3D Accelerometer & variability of a weight reference  & 30-100~Hz \tnote{$\Join$} &
+         360-1200~bps \tnote{$\Join$} &
+         31 days
+         \tabularnewline \hline
+
+       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+       %%%% line
+        Shimmer Research GSR Sensor &
+         commercial
+         & Galvanic skin response & measure skin conductivity & up to 15.9~Hz &
+         191~bps &
+         60 $\mu$A  
+         \tabularnewline \hline
+       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+       %%%% line
+         \multirow{2}{*}{Nonin Onyx II~\cite{noninOnyxSpecs}} &
+         \multirow{2}{*}{commercial}
+         & $\mathrm{O_2}$ saturation (full waveform) & \multirow{2}{15em}{measure light absorption by blood haemoglobin}  &
+         75~Hz & 1200~bps &
+         \multirow{2}{6.5em}{\centering 2$\times$1.5~V AAA (600 tests)}
+         \tabularnewline \cline{3-3} \cline{5-6}
+
+         %%%% line
+          &
+         & $\mathrm{O_2}$  saturation (display format)  &   &
+         1~Hz & 8~bps &
+         
+         \tabularnewline \hline
+
+         %%%% line
+         Medtronic iPro CGM & commercial
+         & continuous glucose meter & electrochemical detection of glucose through its reaction with glucose oxidase
+         & 0.1~Hz \tnote{$\lhd$} & 1~bps \tnote{$\rhd$}&
+         up to 72~h
+         \tabularnewline \hline
+
+         %%%% line
+         Brain sensor by Nurmikko et al. & in research \tnote{$\ddag$} &  brain activity &  microelectrode arrays detect neuron firing & \multicolumn{2}{c|}{40~k samples/sec$\times$16 channels \tnote{$\aleph$}} &
+        12~mW 
+         \tabularnewline \hline
+
+         %%%% line
+         Molecular biomarkers by Ling et al. & research prototype \tnote{$\star$} &  serum cardiac troponin I, creatinine kinase, myoglobin &  magnetic properties of sensors vary according to presence of biomarker &
+         \multicolumn{3}{c|}{N/A} 
+         \tabularnewline \hline
+
+          %%%% line
+          Electrochemical dopamine sensor by Chan et al.\tnote{$\otimes$} & research  &  dopamine &  Interdigitated micro electrodes measured electrochemical reaction& 50~Hz & -- & 10~pA
+         \tabularnewline \hline
+
+      %\end{tabularx}
+      \end{tabular}
+      \begin{tablenotes}[online]
+      \item[$\propto $] data rates are based on the frequency and the accuracy in bits
+         stated in the references; they do not include time stamps or message headers.
+      \item[$\Diamond$] values taken from the references as available.
+      \item[$\Join$] for each of the 3 axis.
+      \item [$\lhd$] sensor data is collected every 10~s by collector.
+      \item [$\rhd$] our assumption of 9 bits per measure (up to 512~mg/dL (\acs{USA} glucose units)).
+      \item[$\ddag$] prototypes and clinical trials exist for devices with 16 channels.
+      \item[$\aleph$] more channels are needed (e.g. for decoding arm joint angles); 100 channels arrays are being developed.
+      \item[$\star$] tested on mice; measurement using \ac{MRI}, but test values were extracted from explanted sensors.
+      \item [$\otimes$] the developed sensor was not made of nano tubes, which according to the authors, led to poor sensitivity.
+      \end{tablenotes}
+      }
+   \end{threeparttable}
+\end{sidewaystable}
+
+
+\section{Unidades}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Deve-se usar o sistema ISO de unidades e respeitar a capitalização das unidades de acordo com a norma. Ver \emph{Quantities and units} em \href{http://www.cl.cam.ac.uk/~mgk25/publ-tips/#typography}{Typographic conventions} (podem e devem dar uma olhada nas outras partes da página).
+
+\section{Sugestões na escrita e uso do tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{itemize}
+   \item usar o \texttt{\textasciitilde{}} para ligar as referências, evita a 
+      possível mudança de página: ex.: \emph{como o Brandão 
+      refere\textasciitilde\textbackslash{}cite\{bran99\}}
+     \begin{itemize}
+        \item também se deve seguir a mesma regra para 
+           \texttt{\textbackslash{}ref}, unidades de dados, nº de standard (ex.: 
+           \emph{IEEE\textasciitilde802.11}).
+     \end{itemize}
+
+\end{itemize}
+\section{Sugestões na escrita}
+\begin{itemize}
+  \item em inglês não usar a \emph{short form}. Em textos formais deve-se manter a \emph{long form}. Incorreto: ``don't use''. \textbf{Correto:} ``do not use''
+  \item em inglês (e também português) não usar a forma reflexiva ou indireta, preferir sempre a forma direta (que é mais assertiva e torna as frases menos complexas).
+     \begin{itemize}
+        \item incorreto:``Python was used to program''; Correto: ``we used Python''
+     \end{itemize}
+  \item Em inglês deve-se ter em atenção quando usar \emph{that} ou 
+     \emph{which}. O \emph{that} é usado quando se tem cláusulas restritivas, e 
+     o \emph{which} quando são não-restritivas. Pela mesma razão o \emph{that} 
+     não tem uma vírgula antes, enquanto o \emph{which} deve ter. Exemplos:
+     \begin{itemize}
+        \item \emph{The performance of the machine \textbf{that} hosted the 
+           database was poor.}
+           \begin{itemize}
+              \item as outras máquinas (que não têm a BD) podem não ter tido má 
+                 performance.
+           \end{itemize}
+        \item \emph{The professors, \textbf{which} usually are knowledgeable, 
+           made a huge blunder.}
+           \begin{itemize}
+              \item caracteriza-se os professores genericamente, não se 
+                 especifica que foram os que fizeram a asneira.
+           \end{itemize}
+        \item Nos casos em que se usa o which, pode-se qualificar, mas não se 
+           restringe, i.e., não é considerada uma cláusula que restrinja, ex.: 
+           \emph{The machine, which was noisy, had a poor performance}. Não é 
+           relevante a máquina ser ruidosa.
+        \item Podem ver \url{Ver http://grammarist.com/usage/which-that/}{mais 
+           alguma informação}.
+     \end{itemize}
+
+\end{itemize}
+
+\section{Referências para outras fontes de informação}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% vim: set fo+=aw tw=80 spl=pt spell: syntax spell toplevel  :

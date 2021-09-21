@@ -1,0 +1,6 @@
+reset;
+option solver gurobi;
+model 1-6.mod;
+data scenario1.dat;
+
+solve;
